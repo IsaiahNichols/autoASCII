@@ -10,7 +10,7 @@ shades = {
     1: "&"
 }
 
-image = Image.open("assets/image.png")
+image = Image.open("assets/image.png") # Change this path for custom image
 px = image.load()
 
 skip = 25
