@@ -10,10 +10,12 @@ shades = {
     1: "&"
 }
 
-image = Image.open("assets/image.png") # Change this path for custom image
+image = Image.open("assets/logo.png") # Change this path for custom image
 px = image.load()
 
-skip = 25
+# You might need to change skip size to view image in terminal
+# comfortably.
+skip = 50
 
 for i in range(image.size[1]):
     if i % skip == 0:
