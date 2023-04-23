@@ -10,22 +10,21 @@ shades = {
     1: "&"
 }
 
-image = Image.open("assets/logo.png") # Change this path for custom image
+image = Image.open("assets/logo.png").convert("RGBA") # Change this path for custom image
 px = image.load()
 
 # You might need to change skip size to view image in terminal
 # comfortably.
 skip = 50
-
 for i in range(image.size[1]):
     if i % skip == 0:
         for j in range(image.size[0]):
             if j % skip == 0:
                 val = 0
-                for k in range(len(px[i, j])):
-                    val += (px[i, j][k])/255
+                for k in range(len(px[j, i])):
+                    val += (px[j, i][k])/255
                 
-                val /= len(px[i, j])
+                val /= len(px[j, i])
                 val = 1-val
                 val = round(val, 1)
 
