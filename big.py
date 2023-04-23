@@ -33,3 +33,5 @@ while res != "no":
                     print(chars[math.floor(val*(len(chars)-1))], end="")
         
             print()
+    
+    res = input("Rescale output (yes/no)? ").lower()
