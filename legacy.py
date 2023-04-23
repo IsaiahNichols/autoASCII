@@ -1,18 +1,20 @@
 from PIL import Image
-import math
 
 shades = {
-    
+    0.4 : "-",
+    0.5 : "~",
+    0.6 : "/",
+    0.7 : "+",
+    0.8 : "#",
+    0.9 : "@",
+    1: "&"
 }
-    
-chars = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'."
-chars = chars[::-1]
 
-image = Image.open("assets/image.png").convert("RGBA") # Change this path for custom image
+image = Image.open("assets/logo.png").convert("RGBA") # Change this path for custom image
 px = image.load()
 
 # You might need to change skip size to view image in terminal
-# comfortably. Larger values shrink the image.
+# comfortably.
 skip = 50
 for i in range(image.size[1]):
     if i % skip == 0:
@@ -24,8 +26,13 @@ for i in range(image.size[1]):
                 
                 val /= len(px[j, i])
                 val = 1-val
-                val = round(val, 2)
+                val = round(val, 1)
 
-                print(chars[math.floor(val*(len(chars)-1))], end="")
+                if val < 0.4:
+                    val = 0.4
+                elif val > 1:
+                    val = 1
+
+                print(shades[val], end="")
     
         print()
